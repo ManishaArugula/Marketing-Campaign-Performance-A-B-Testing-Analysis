@@ -87,6 +87,9 @@ Campaign Type → Campaign Name → Variant (A/B) → Channel → Platform → P
 
 Validation checks ensured logical consistency (e.g. clicks ≤ impressions, conversions ≤ sessions), valid date ranges, non-negative numeric values, and appropriate handling of missing spend and revenue.
 
+<img width="1000" height="900" alt="python" src="https://github.com/user-attachments/assets/2204fbc7-9b81-4446-a372-703b611ae61e" />
+
+
 Cleaning steps included:
 
 1.data type validation
@@ -148,6 +151,9 @@ A one-sided two-proportion z-test failed to reject the null hypothesis (p = 0.84
 3.Execution-level levers (platform, placement, device) provide incremental optimisation rather than step-change improvements.
 
 4.Not all experiments yield winners; validating outcomes statistically is critical to avoid false optimisation.
+
+<img width="1000" height="900" alt="powerbi2" src="https://github.com/user-attachments/assets/1d89fa5b-11ea-4bbf-81ad-2dca6e52dd2e" />
+
 
 ## Conclusion
 
