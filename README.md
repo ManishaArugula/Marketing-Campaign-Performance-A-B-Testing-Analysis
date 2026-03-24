@@ -2,13 +2,13 @@
 
 ## Project Overview
 
-This project evaluates the performance of multiple marketing campaigns across channels to identify which strategies deliver the strongest revenue efficiency and whether creative experimentation improves conversion outcomes. The analysis follows a structured growth analytics workflow covering KPI design, data validation, exploratory analysis, diagnostics, experimentation, and insight communication.
+This project examines the performance of marketing campaigns carried out through multiple marketing channels. The purpose of the examination is to identify areas for enhancing marketing efficiency and increasing revenue. The project also examines the performance of marketing campaigns in relation to various factors, such as device type, platform, and geography. In addition, an A/B test is carried out to evaluate the performance of new ad creatives in enhancing conversion performance. The main goal of the analysis is to identify high-performing marketing campaigns and marketing channels.
 
 ## Business Problem
 
-The company runs multiple marketing campaigns across channels but lacks clarity on:
-
-which campaign strategies convert spend into revenue most efficiently, and whether ongoing A/B experiments meaningfully improve conversion performance.
+This project evaluates two important questions for business growth:
+1. The performance of different marketing campaigns across channels to identify which one delivers the strongest revenue efficiency
+2. Do ad variants have a significant difference in conversion outcomes?
 
 ## Goals
 
@@ -18,39 +18,37 @@ which campaign strategies convert spend into revenue most efficiently, and wheth
 
 ## KPIs & Measurement Framework
 
-1.Goal 1 – Campaign Revenue Efficiency
+1. Goal 1 – Campaign Revenue Efficiency
 
-#### Primary (Evaluative):
+#### Primary:
 
 -->ROAS (Revenue ÷ Spend)
 
-#### Secondary (Contextual):
+#### Secondary:
 
---> Total / average spend
+--> Total Spend
 
---> Total / average revenue
+--> Total Revenue
 
-#### Descriptive (Mechanism):
+#### Additional KPIs:
 
--->CTR (engagement signal)
+--> CTR 
 
--->Conversion volume (scale context)
+--> CVR 
 
-2.Goal 2 – A/B Variant Performance
+2. Goal 2 – A/B Variant Performance
 
-#### Primary (Evaluative):
+#### Primary:
 
--->CVR (Conversions ÷ Sessions)
+--> CVR (Conversions ÷ Sessions)
 
-#### Secondary (Evaluative):
+#### Secondary:
 
--->CPA (Spend ÷ Conversions)
+--> CPA (Spend ÷ Conversions)
 
-#### Descriptive / Diagnostic:
+#### Descriptive:
 
--->Sessions (traffic balance)
-
--->Selected funnel step (e.g. sign-up rate)
+--> Total Sessions 
 
 Each research question is evaluated using one primary metric. Secondary and descriptive metrics are used only to explain or contextualise results.
 
@@ -62,13 +60,13 @@ Over a 30-day period, how do Brand Awareness, Free Trial, and Discount Offer cam
 Exploratory diagnostics were conducted across platform, device, placement, location, and audience dimensions to explain observed differences.
 
 2.RQ2:
-For the selected Discount Offer Paid Social campaign (Discount_Flash48h, chosen based on highest traffic volume), does Variant B demonstrate a higher conversion rate than Variant A over the same 30-day period?
+For the Discount Offer campaign in Paid Socials (Discount_Flash48h, chosen based on highest traffic volume), does Variant B demonstrate a higher conversion rate than Variant A over the same 30-day period?
 
 ## Tools Used
 
 1.Excel: Data understanding, validation, cleaning, KPI construction
 
-2.SQL: Exploratory analysis and campaign diagnostics (Layers 1–3)
+2.SQL: Exploratory analysis 
 
 3.Python: A/B testing and statistical hypothesis testing
 
@@ -76,7 +74,7 @@ For the selected Discount Offer Paid Social campaign (Discount_Flash48h, chosen 
 
 ## Data Understanding
 
--->The dataset contains daily campaign performance data across 30 days, including campaign hierarchy, delivery context, funnel metrics, spend, and revenue.
+-->The dataset contains daily campaign performance data across 30 days, including campaign hierarchy, channels, funnel metrics, spend, and revenue.
 
 -->Hierarchy:
 Campaign Type → Campaign Name → Variant (A/B) → Channel → Platform → Placement → Adset → Creative
@@ -100,9 +98,9 @@ Cleaning steps included:
 
 4.business-logic treatment of missing numeric values
 
-5.flagging anomalous records
+5.flagging inaccruate records
 
-6.KPIs were calculated only after aggregation; ratios were never averaged row-wise.
+6.KPIs were calculated only after aggregation at campaign level or channel level depending on the context
 
 ## Analysis Approach (SQL)
 
@@ -116,19 +114,21 @@ Scale vs efficiency analysis using spend and revenue share.
 Diagnostic drill-downs by platform, device, placement, geography, and campaign name.
 
 4.Layer 4 – What should be tested next?
-Evidence-based suggestions (not optimisation decisions).
+Evidence-based suggestions 
 
 ## Key Findings (RQ1)
 
-1.Discount Offer campaigns deliver the strongest revenue efficiency, generating ~£5 in revenue per £1 of spend and consistently outperforming Free Trial and Brand Awareness campaigns.
+1. Discount Offer campaign
+Discount Offer campaign has the best ROAS results at 4.95. This indicates that the campaign is effective in encouraging customers to make purchases and that the budget allocation for the campaign may need to be increased.
 
-2.Paid Social uniquely combines strong ROAS with the highest spend and revenue contribution, indicating efficiency at scale.
+2. Email channel
+Email channel ROAS results are extremely high at 65 and 167. However, the spend for the channel is extremely low, maintaining current investment while prioritising more scalable channels may be more effective.
 
-3.Email and Affiliate channels show extremely high ROAS but operate at low spend, limiting absolute revenue impact.
+3. Paid Social campaign
+Paid Social campaign ROAS results range from 4 to 5 and have a high level of scalability with a good level of spend. This makes the campaign a good option for increased budget allocation.
 
-4.Brand Awareness campaigns consume a meaningful share of spend but generate minimal downstream revenue within the observed window.
-
-5.Diagnostic analysis shows execution-level factors (placement and device) provide incremental gains, while platform and geography differences are modest.
+4. Device / placement / geography
+ROAS results for the different devices and placements show a similar trend with only a modest variation in the results for different platform and geography, suggesting campaign optimisation efforts should focus more on strategy and targeting rather than device-specific adjustments.
 
 ## A/B Testing (RQ2)
 
@@ -144,17 +144,15 @@ A one-sided two-proportion z-test failed to reject the null hypothesis (p = 0.84
 
 ## Strategic Interpretation
 
-1.Campaign strategy and offer structure are the dominant drivers of revenue efficiency.
+1. Campaign performance
+The performance of the Discount Offer campaign reveals the highest ROAS, especially for the Paid Social channel, implying high revenue generation capacity, thus ensuring that the campaign can be scaled up safely. The performance of the campaigns seems consistent across platforms, devices, and regions, implying that these factors have minimal impact on the overall efficiency of the campaigns.
 
-2.Channel choice determines scalability of that efficiency.
-
-3.Execution-level levers (platform, placement, device) provide incremental optimisation rather than step-change improvements.
-
-4.Not all experiments yield winners; validating outcomes statistically is critical to avoid false optimisation.
+2. A/B testing results
+The A/B test for the variations of the ads reveals that there is no significant difference in the conversion rates, implying that the new version of the ad is not significantly better than the existing one, and therefore, optimization efforts can be focused elsewhere.
 
 <img width="1000" height="900" alt="powerbi2" src="https://github.com/user-attachments/assets/1d89fa5b-11ea-4bbf-81ad-2dca6e52dd2e" />
 
 
 ## Conclusion
 
-This project demonstrates an end-to-end growth analytics workflow: defining business problems, selecting appropriate KPIs, validating and analysing data, diagnosing performance across scale and efficiency, testing hypotheses rigorously, and communicating insights with appropriate caution.
+This project demonstrates an end-to-end growth analytics workflow: defining business problems, selecting appropriate KPIs, validating and analysing data, evaluating performance across scale and efficiency, testing hypotheses rigorously, and communicating insights with appropriate caution.
